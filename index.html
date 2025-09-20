@@ -1,0 +1,2908 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juguetería Panchito</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome CDN para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+            background-image: url('bm/inicio1.webp');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+        }
+        /* Oculta la barra de desplazamiento del carrusel pero permite el scroll */
+        .carousel-container::-webkit-scrollbar {
+            display: none;
+        }
+        .carousel-container {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+
+        /* Clase para el efecto de zoom */
+        .carousel-card {
+            transition: transform 0.3s ease-in-out;
+            transform: scale(0.9);
+            opacity: 0.7;
+        }
+        
+        .carousel-card.is-active {
+            transform: scale(1.0);
+            opacity: 1;
+        }
+
+        /* Estilo para que el scroll se alinee mejor */
+        #product-carousel {
+            scroll-snap-type: x mandatory;
+        }
+        .carousel-card {
+            scroll-snap-align: center;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <!-- Barra de Navegación -->
+    <nav class="bg-red-600 p-4 shadow-lg">
+        <div class="container mx-auto flex items-center justify-between">
+            <!-- Menú de navegación principal -->
+            <div class="hidden md:flex items-center space-x-6 text-white text-lg">
+                <a href="#" id="home-link" class="rounded-full px-4 py-2 font-medium hover:bg-red-700 transition-colors duration-300">
+                    Inicio
+                </a>
+                <a href="#" id="products-link" class="rounded-full px-4 py-2 font-medium hover:bg-red-700 transition-colors duration-300">
+                    Productos
+                </a>
+            </div>
+
+            <!-- Botón de menú para móviles -->
+            <button id="menu-button" class="md:hidden text-white text-2xl p-2 rounded-full hover:bg-red-700 transition-colors duration-300 focus:outline-none">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <!-- Iconos de utilidades -->
+            <div class="flex items-center space-x-4 text-white text-2xl">
+                <!-- Icono de WhatsApp -->
+                <a href="https://wa.me/" target="_blank" aria-label="Contacto por WhatsApp" class="rounded-full p-2 hover:bg-green-600 transition-colors duration-300">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <!-- Botón de búsqueda -->
+                <button id="search-button" aria-label="Buscar productos" class="rounded-full p-2 hover:bg-red-700 transition-colors duration-300 focus:outline-none">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Menú desplegable para móviles -->
+        <div id="mobile-menu" class="hidden md:hidden mt-4 bg-red-700 rounded-lg p-4 space-y-2">
+            <a href="#" id="mobile-home-link" class="block text-white font-medium py-2 px-4 hover:bg-red-800 rounded-lg transition-colors duration-300">
+                Inicio
+            </a>
+            <a href="#" id="mobile-products-link" class="block text-white font-medium py-2 px-4 hover:bg-red-800 rounded-lg transition-colors duration-300">
+                Productos
+            </a>
+        </div>
+        
+        <!-- Barra de búsqueda -->
+        <div id="search-bar" class="hidden container mx-auto mt-4">
+            <input type="text" id="search-input" placeholder="Buscar productos..." class="w-full px-4 py-2 rounded-full border-2 border-transparent focus:outline-none focus:border-red-500 transition-colors duration-300">
+        </div>
+    </nav>
+    
+    <main class="container mx-auto py-10">
+        <!-- Contenido de la sección de Inicio -->
+        <div id="home-content">
+            <h1 class="text-5xl md:text-6xl font-extrabold text-center tracking-tight mb-12 bg-clip-text text-transparent bg-gradient-to-r from-red-600 to-orange-400 drop-shadow-lg">
+                Juguetería Panchito
+            </h1>
+            
+            <!-- Contenedor principal con sombra y fondo para el carrusel -->
+            <div class="bg-white p-6 md:p-10 rounded-3xl shadow-2xl mt-12">
+                <!-- Carrusel de productos -->
+                <div class="relative">
+                    <!-- Contenedor de las tarjetas de productos con scroll horizontal -->
+                    <div id="product-carousel" class="flex overflow-x-auto gap-4 p-4 carousel-container">
+                        <!-- Tarjeta 1 -->
+                        <div class="carousel-card flex-none w-64 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer p-4 text-left flex flex-col justify-between">
+                            <div class="min-h-[100px]">
+                                <img src="bm/54.jpg" alt="PUZZLE LA SELVA 8 PIEZAS" class="w-full h-40 object-cover rounded-lg mb-4">
+                                <h3 class="text-xl font-bold text-red-800">PUZZLE LA SELVA 8 PIEZAS</h3>
+                                <p class="text-gray-500 text-sm">Código: dur/54</p>
+                            </div>
+                            <span class="text-2xl font-semibold text-red-600 mt-2 block">$2.463</span>
+                        </div>
+                        <!-- Tarjeta 2 -->
+                        <div class="carousel-card flex-none w-64 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer p-4 text-left flex flex-col justify-between">
+                            <div class="min-h-[100px]">
+                                <img src="bm/55.jpg" alt="PUZZLE LA GRANJA 8 PIEZAS" class="w-full h-40 object-cover rounded-lg mb-4">
+                                <h3 class="text-xl font-bold text-red-800">PUZZLE LA GRANJA 8 PIEZAS</h3>
+                                <p class="text-gray-500 text-sm">Código: dur/55</p>
+                            </div>
+                            <span class="text-2xl font-semibold text-red-600 mt-2 block">$2.463</span>
+                        </div>
+                        <!-- Tarjeta 3 -->
+                        <div class="carousel-card flex-none w-64 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer p-4 text-left flex flex-col justify-between">
+                            <div class="min-h-[100px]">
+                                <img src="bm/280.jpg" alt="MOTO FUEGO" class="w-full h-40 object-cover rounded-lg mb-4">
+                                <h3 class="text-xl font-bold text-red-800">MOTO FUEGO</h3>
+                                <p class="text-gray-500 text-sm">Código: dur/280</p>
+                            </div>
+                            <span class="text-2xl font-semibold text-red-600 mt-2 block">$25.059</span>
+                        </div>
+                        <!-- Tarjeta 4 -->
+                        <div class="carousel-card flex-none w-64 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer p-4 text-left flex flex-col justify-between">
+                            <div class="min-h-[100px]">
+                                <img src="bm/281.jpg" alt="MOTO UNICORNIO" class="w-full h-40 object-cover rounded-lg mb-4">
+                                <h3 class="text-xl font-bold text-red-800">MOTO UNICORNIO</h3>
+                                <p class="text-gray-500 text-sm">Código: dur/281</p>
+                            </div>
+                            <span class="text-2xl font-semibold text-red-600 mt-2 block">$25.059</span>
+                        </div>
+                        <!-- Tarjeta 5 -->
+                        <div class="carousel-card flex-none w-64 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer p-4 text-left flex flex-col justify-between">
+                            <div class="min-h-[100px]">
+                                <img src="bm/370.jpg" alt="CEMENTERO" class="w-full h-40 object-cover rounded-lg mb-4">
+                                <h3 class="text-xl font-bold text-red-800">CEMENTERO</h3>
+                            <p class="text-gray-500 text-sm">Código: dur/370</p>
+                            </div>
+                            <span class="text-2xl font-semibold text-red-600 mt-2 block">$2.293</span>
+                        </div>
+                        <!-- Tarjeta 6 -->
+                        <div class="carousel-card flex-none w-64 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer p-4 text-left flex flex-col justify-between">
+                            <div class="min-h-[100px]">
+                                <img src="bm/371.jpg" alt="BASURERO MINI" class="w-full h-40 object-cover rounded-lg mb-4">
+                                <h3 class="text-xl font-bold text-red-800">BASURERO MINI</h3>
+                                <p class="text-gray-500 text-sm">Código: dur/371</p>
+                            </div>
+                            <span class="text-2xl font-semibold text-red-600 mt-2 block">$2.293</span>
+                        </div>
+                        <!-- Tarjeta 7 -->
+                        <div class="carousel-card flex-none w-64 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer p-4 text-left flex flex-col justify-between">
+                            <div class="min-h-[100px]">
+                                <img src="bm/698.jpg" alt="MI PRIMERA PISTA" class="w-full h-40 object-cover rounded-lg mb-4">
+                                <h3 class="text-xl font-bold text-red-800">MI PRIMERA PISTA</h3>
+                                <p class="text-gray-500 text-sm">Código: dur/698</p>
+                            </div>
+                            <span class="text-2xl font-semibold text-red-600 mt-2 block">$8.383</span>
+                        </div>
+                    </div>
+                    <!-- Botones de navegación del carrusel -->
+                    <button id="prev-btn" class="absolute top-1/2 left-0 -translate-y-1/2 bg-red-500 hover:bg-red-700 text-white p-3 rounded-full shadow-lg z-10 transition-colors duration-300">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button id="next-btn" class="absolute top-1/2 right-0 -translate-y-1/2 bg-red-500 hover:bg-red-700 text-white p-3 rounded-full shadow-lg z-10 transition-colors duration-300">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+
+                <!-- Título de Novedades -->
+                <div class="text-center mt-10">
+                    <h2 class="text-4xl md:text-5xl font-extrabold text-red-600 tracking-tight">
+                        Novedades!!!
+                    </h2>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contenido de la sección de Productos (inicialmente oculta) -->
+        <div id="products-content" class="hidden bg-white p-6 md:p-10 rounded-3xl shadow-2xl mt-12">
+            <div class="text-center mb-10">
+                <h2 class="text-4xl md:text-5xl font-extrabold text-gray-800 tracking-tight">
+                    Categorías de Productos Duravit
+                </h2>
+            </div>
+            
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8">
+                <!-- Categoria 1: Puzzles -->
+                <div id="puzzles-category-card" class="flex flex-col items-center text-center cursor-pointer">
+                    <img src="bm/puzzles enzo.png" alt="Puzzles" class="w-36 h-36 object-cover rounded-full shadow-lg border-4 border-red-300 mb-4">
+                    <span class="text-lg font-semibold text-gray-800">Puzzles</span>
+                </div>
+                <!-- Categoria 2: Didácticos -->
+                <div id="didacticos-category-card" class="flex flex-col items-center text-center cursor-pointer">
+                    <img src="bm/didactico.webp" alt="Didácticos" class="w-36 h-36 object-cover rounded-full shadow-lg border-4 border-red-300 mb-4">
+                    <span class="text-lg font-semibold text-gray-800">Didácticos</span>
+                </div>
+                <!-- Categoria nueva: Estación de Servicios -->
+                <div id="estacion-de-servicios-category-card" class="flex flex-col items-center text-center cursor-pointer">
+                    <img src="bm/servicio.webp" alt="Estación de Servicios" class="w-36 h-36 object-cover rounded-full shadow-lg border-4 border-red-300 mb-4">
+                    <span class="text-lg font-semibold text-gray-800">Estación de Servicios</span>
+                </div>
+                <!-- Categoria 3: Juegos de Mesa -->
+                <div id="juegos-de-mesa-category-card" class="flex flex-col items-center text-center cursor-pointer">
+                    <img src="bm/juegos de mesas.webp" alt="Juegos de Mesa" class="w-36 h-36 object-cover rounded-full shadow-lg border-4 border-red-300 mb-4">
+                    <span class="text-lg font-semibold text-gray-800">Juegos de Mesa</span>
+                </div>
+                <!-- Categoria 4: Playa -->
+                <div id="playa-category-card" class="flex flex-col items-center text-center cursor-pointer">
+                    <img src="bm/playa.webp" alt="Playa" class="w-36 h-36 object-cover rounded-full shadow-lg border-4 border-red-300 mb-4">
+                    <span class="text-lg font-semibold text-gray-800">Playa</span>
+                </div>
+                <!-- Categoria 5: Línea Minis -->
+                <div id="linea-minis-category-card" class="flex flex-col items-center text-center cursor-pointer">
+                    <img src="bm/minis.webp" alt="Línea Minis" class="w-36 h-36 object-cover rounded-full shadow-lg border-4 border-red-300 mb-4">
+                    <span class="text-lg font-semibold text-gray-800">Línea Minis</span>
+                </div>
+                <!-- Categoria 6: Rodados Chicos -->
+                <div id="rodados-chicos-category-card" class="flex flex-col items-center text-center cursor-pointer">
+                    <img src="bm/chico.webp" alt="Rodados Chicos" class="w-36 h-36 object-cover rounded-full shadow-lg border-4 border-red-300 mb-4">
+                    <span class="text-lg font-semibold text-gray-800">Rodados Chicos</span>
+                </div>
+                <!-- Categoria 7: Rodados Medios -->
+                <div id="rodados-medios-category-card" class="flex flex-col items-center text-center cursor-pointer">
+                    <img src="bm/medianos.webp" alt="Rodados Medianos" class="w-36 h-36 object-cover rounded-full shadow-lg border-4 border-red-300 mb-4">
+                    <span class="text-lg font-semibold text-gray-800">Rodados Medianos</span>
+                </div>
+                <!-- Categoria 8: Rodados Grandes -->
+                <div id="rodados-grandes-category-card" class="flex flex-col items-center text-center cursor-pointer">
+                    <img src="bm/grande.webp" alt="Rodados Grandes" class="w-36 h-36 object-cover rounded-full shadow-lg border-4 border-red-300 mb-4">
+                    <span class="text-lg font-semibold text-gray-800">Rodados Grandes</span>
+                </div>
+                <!-- Categoria 9: Línea Hogar -->
+                <div id="linea-hogar-category-card" class="flex flex-col items-center text-center cursor-pointer">
+                    <img src="bm/hogar.webp" alt="Línea Hogar" class="w-36 h-36 object-cover rounded-full shadow-lg border-4 border-red-300 mb-4">
+                    <span class="text-lg font-semibold text-gray-800">Línea Hogar</span>
+                </div>
+                <!-- Categoria 10: Línea Masas -->
+                <div id="linea-masas-category-card" class="flex flex-col items-center text-center cursor-pointer">
+                    <img src="bm/masas.webp" alt="Línea Masas" class="w-36 h-36 object-cover rounded-full shadow-lg border-4 border-red-300 mb-4">
+                    <span class="text-lg font-semibold text-gray-800">Línea Masas</span>
+                </div>
+                <!-- Categoria 11: Línea Blocks -->
+                <div id="linea-blocks-category-card" class="flex flex-col items-center text-center cursor-pointer">
+                    <img src="bm/blocks.webp" alt="Línea Blocks" class="w-36 h-36 object-cover rounded-full shadow-lg border-4 border-red-300 mb-4">
+                    <span class="text-lg font-semibold text-gray-800">Línea Blocks</span>
+                </div>
+                <!-- Categoria 12: Línea Juegos -->
+                <div id="linea-juegos-category-card" class="flex flex-col items-center text-center cursor-pointer">
+                    <img src="bm/linea juego.webp" alt="Línea Juegos" class="w-36 h-36 object-cover rounded-full shadow-lg border-4 border-red-300 mb-4">
+                    <span class="text-lg font-semibold text-gray-800">Línea Juegos</span>
+                </div>
+                <!-- Categoria 13: Línea Taller -->
+                <div id="linea-taller-category-card" class="flex flex-col items-center text-center cursor-pointer">
+                    <img src="bm/taller.webp" alt="Línea Taller" class="w-36 h-36 object-cover rounded-full shadow-lg border-4 border-red-300 mb-4">
+                    <span class="text-lg font-semibold text-gray-800">Línea Taller</span>
+                </div>
+                <!-- Categoria 14: Línea Jardín -->
+                <div id="linea-jardin-category-card" class="flex flex-col items-center text-center cursor-pointer">
+                    <img src="bm/jardin.webp" alt="Línea Jardín" class="w-36 h-36 object-cover rounded-full shadow-lg border-4 border-red-300 mb-4">
+                    <span class="text-lg font-semibold text-gray-800">Línea Jardín</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contenido de la sección de Puzzles (inicialmente oculta) -->
+        <div id="puzzles-content" class="hidden bg-white p-6 md:p-10 rounded-3xl shadow-2xl mt-12">
+            <div class="flex items-center justify-between mb-8">
+                <div class="flex items-center space-x-4">
+                    <button id="back-to-categories" class="bg-red-500 hover:bg-red-600 text-white rounded-full p-2 w-10 h-10 flex items-center justify-center">
+                        <i class="fas fa-arrow-left"></i>
+                    </button>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-gray-800 tracking-tight text-center flex-grow">
+                    Puzzles
+                </h2>
+                <div></div> <!-- Div vacío para mantener la alineación -->
+            </div>
+            <div id="puzzles-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <!-- Tarjetas de Puzzles -->
+                <!-- Tarjeta 1 -->
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/1.jpg" alt="PUZZLE PATAGONIA" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">PUZZLE PATAGONIA</h3>  
+                    </div>
+                     <p class="text-gray-500 text-sm">Código: dur/1</p>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$2.375</span>
+                </div>
+
+                <!-- Tarjeta 2 -->
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/2.jpg" alt="PUZZLE NUMEROS" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">PUZZLE NUMEROS</h3>
+                    </div>
+                     <p class="text-gray-500 text-sm">Código: dur/2</p>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$2.463</span>
+                </div>
+
+                <!-- Tarjeta 3 -->
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/3.jpg" alt="PUZZLE GRANJA CUADRADO 24 PIEZAS" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">PUZZLE GRANJA CUADRADO 24 PIEZAS</h3>
+                         </div>
+                        <p class="text-gray-500 text-sm">Código: dur/3</p>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$5.979</span>
+                </div>
+
+                 <!-- Tarjeta 4 -->
+                 <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/4.jpg" alt="PUZZLE ZOO CUADRADO 24 PIEZAS" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">PUZZLE ZOO CUADRADO 24 PIEZAS</h3>
+                    </div>
+                      <p class="text-gray-500 text-sm">Código: dur/4</p>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$5.979</span>
+                </div>
+
+                <!-- Tarjeta 5 -->
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/5.jpg" alt="PUZZLE TRANSPORTES" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">PUZZLE TRANSPORTES</h3>
+                    </div>
+                     <p class="text-gray-500 text-sm">Código: dur/5</p>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$2.375</span>
+                </div>
+
+                <!-- Tarjeta 6 -->
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/6.jpg" alt="PUZZLE GRANJA Y ZOO 25 PIEZAS" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">PUZZLE GRANJA Y ZOO 25 PIEZAS</h3>
+                    </div>
+                      <p class="text-gray-500 text-sm">Código: dur/6</p>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$4.579</span>
+                </div>
+
+                <!-- Tarjeta 7 -->
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/7.jpg" alt="PUZZLE ABECEDARIO" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">PUZZLE ABECEDARIO</h3>
+                    </div>
+                        <p class="text-gray-500 text-sm">Código: dur/7</p>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$2.463</span>
+                </div>
+
+                <!-- Tarjeta 8 -->
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/9.jpg" alt="PUZZLE GRANDE DINOSAURIO" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">PUZZLE GRANDE DINOSAURIO</h3>
+                       </div>           
+                     <p class="text-gray-500 text-sm">Código: dur/9</p>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$2.463</span>
+                </div>
+                <!-- Tarjeta 9 -->
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/10.jpg" alt="PUZZLE GRANJA MODELO 2" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">PUZZLE GRANJA MODELO 2</h3>
+                      </div> 
+                        <p class="text-gray-500 text-sm">Código: dur/10</p>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$2.375</span>
+                </div>
+                 <!-- Tarjeta 10 -->
+                 <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/15.jpg"alt="PUZZLE OFICIOS" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">PUZZLE OFICIOS</h3>
+                     </div>  
+                      <p class="text-gray-500 text-sm">Código: dur/15</p>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$2.407</span>
+                </div>
+                <!-- Tarjeta 11 -->
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/16.jpg" alt="PUZZLE ACUARIO" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">PUZZLE ACUARIO</h3>
+                     </div>  
+                      <p class="text-gray-500 text-sm">Código: dur/16</p>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$2.375</span>
+                </div>
+                <!-- Tarjeta 12 -->
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/17.jpg" alt="PUZZLE ARCA DE NOE" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">PUZZLE ARCA DE NOE</h3>
+                     </div>   
+                      <p class="text-gray-500 text-sm">Código: dur/17</p>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$2.463</span>
+                </div>
+                <!-- Tarjeta 13 -->
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/18.jpg" alt="PUZZLE CONSTRUCTOR GRANDE" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">PUZZLE CONSTRUCTOR GRANDE</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/18</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$2.463</span>
+                </div>
+                <!-- Tarjeta 14 -->
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/19.jpg" alt="PUZZLE CONSTRUCTOR CHICO" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">PUZZLE CONSTRUCTOR CHICO</h3>
+                       </div> 
+                         <p class="text-gray-500 text-sm">Código: dur/19</p>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$2.375</span>
+                </div>
+                <!-- Tarjeta 15 -->
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/21.jpg" alt="PUZZLE FAUNA ANTARTIDA" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">PUZZLE FAUNA ANTARTIDA</h3>
+                      </div> 
+                        <p class="text-gray-500 text-sm">Código: dur/21</p>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$5.979</span>
+                </div>
+
+                 <!-- Tarjeta 16 -->
+                 <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/22.jpg" alt="PUZZLE ZOO 2" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">PUZZLE ZOO 2</h3>
+                     </div>
+                         <p class="text-gray-500 text-sm">Código: dur/22</p>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$2.375</span>
+                </div>
+                 <!-- Tarjeta 17 -->
+                 <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/23.jpg" alt="PUZZLE AUTOS" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">PUZZLE AUTOS</h3>
+                     </div>  
+                       <p class="text-gray-500 text-sm">Código: dur/23</p>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$2.375</span>
+                </div>
+                <!-- Tarjeta 18 -->
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/24.jpg" alt="PUZZLE PATAGONIA X 24 PIEZAS" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">PUZZLE PATAGONIA X 24 PIEZAS</h3>
+                      </div> 
+                       <p class="text-gray-500 text-sm">Código: dur/24</p>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$5.979</span>
+                </div>
+                <!-- Tarjeta 19 -->
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/29.jpg" alt="PUZZLE ACUARIO 2" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">PUZZLE ACUARIO 2</h3>
+                     </div>   
+                      <p class="text-gray-500 text-sm">Código: dur/29</p>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$2.375</span>
+                </div>
+                <!-- Tarjeta 20 -->
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/30.jpg" alt="PUZZLE ACUARIO X 25 PIEZAS" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">PUZZLE ACUARIO X 25 PIEZAS</h3>
+                       </div> 
+                         <p class="text-gray-500 text-sm">Código: dur/30</p>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$2.463</span>
+                </div>
+                <!-- Tarjeta 21 -->
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/31.jpg" alt="PUZZLE DEPORTES" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">PUZZLE DEPORTES</h3>
+                      </div> 
+                        <p class="text-gray-500 text-sm">Código: dur/31</p>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$2.375</span>
+                </div>
+                <!-- Tarjeta 22 -->
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/32.jpg" alt="PUZZLE CLASICOS" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">PUZZLE CLASICOS</h3>
+                      </div>  
+                        <p class="text-gray-500 text-sm">Código: dur/32</p>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$2.375</span>
+                </div>
+                <!-- Tarjeta 23 -->
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/33.jpg" alt="PUZZLE FAUNA MISIONERA X 24 PIEZAS" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">PUZZLE FAUNA MISIONERA X 24 PIEZAS</h3>
+                     </div> 
+                        <p class="text-gray-500 text-sm">Código: dur/33</p>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$5.979</span>
+                </div>
+                <!-- Tarjeta 24 -->
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/41.jpg" alt="PUZZLE MI PRINCESA" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">PUZZLE MI PRINCESA</h3>
+                       </div> 
+                        <p class="text-gray-500 text-sm">Código: dur/41</p>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$2.463</span>
+                </div>
+                <!-- Tarjeta 25 -->
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/42.jpg" alt="PUZZLE MI PRINCESA 2" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">PUZZLE MI PRINCESA 2</h3>
+                       </div>  
+                        <p class="text-gray-500 text-sm">Código: dur/42</p>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$2.463</span>
+                </div>
+                <!-- Tarjeta 26 -->
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/43.jpg" alt="PUZZLE CIRCO" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">PUZZLE CIRCO</h3>
+                         </div> 
+                           <p class="text-gray-500 text-sm">Código: dur/43</p>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$8.729</span>
+                </div>
+                <!-- Tarjeta 27 -->
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/44.jpg" alt="PUZZLE PRINCESA 3" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">PUZZLE PRINCESA 3</h3>
+                      </div> 
+                        <p class="text-gray-500 text-sm">Código: dur/44</p>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$2.463</span>
+                </div>
+                <!-- Tarjeta 28 -->
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/45.jpg" alt="PUZZLE TRES CHANCHITOS CAJA" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">PUZZLE TRES CHANCHITOS CAJA</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/45</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$7.019</span>
+                </div>
+                <!-- Tarjeta 29 -->
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/47.jpg" alt="PUZZLE CENICIENTAS CAJA" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">PUZZLE CENICIENTAS CAJA</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/47</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$7.019</span>
+                </div>
+                <!-- Tarjeta 30 -->
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/48.jpg" alt="PUZZLE PIRATAS" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">PUZZLE PIRATAS</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/48</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$2.463</span>
+                </div>
+                <!-- Tarjeta 31 -->
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/49.jpg" alt="PUZZLE BOMBEROS" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">PUZZLE BOMBEROS</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/49</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$2.463</span>
+                </div>
+                <!-- Tarjeta 32 -->
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/50.jpg" alt="PUZZLE PRINCESAS X 4" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">PUZZLE PRINCESAS X 4</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/50</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$2.375</span>
+                </div>
+                <!-- Tarjeta 33 -->
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/51.jpg" alt="PUZZLE PARQUE DIVERSIONES" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">PUZZLE PARQUE DIVERSIONES</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/51</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$5.979</span>
+                </div>
+                <!-- Nueva Tarjeta 34 -->
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/557.jpg" alt="PUZZLE ZOO" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">PUZZLE ZOO</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/557</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$2.375</span>
+                </div>
+                <!-- Nueva Tarjeta 35 -->
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/559.jpg" alt="PUZZLE GRANJA" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">PUZZLE GRANJA</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/559</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$2.375</span>
+                </div>
+                
+            </div>
+        </div>
+        
+        <!-- Contenido de la sección de Didácticos (inicialmente oculta) -->
+        <div id="didacticos-content" class="hidden bg-white p-6 md:p-10 rounded-3xl shadow-2xl mt-12">
+            <div class="flex items-center justify-between mb-8">
+                <div class="flex items-center space-x-4">
+                    <button id="back-to-didacticos-categories" class="bg-red-500 hover:bg-red-600 text-white rounded-full p-2 w-10 h-10 flex items-center justify-center">
+                        <i class="fas fa-arrow-left"></i>
+                    </button>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-gray-800 tracking-tight text-center flex-grow">
+                    Didácticos
+                </h2>
+                <div></div> <!-- Div vacío para mantener la alineación -->
+            </div>
+            <div id="didacticos-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <!-- 23 Tarjetas de Didácticos -->
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/552.jpg" alt="BARCO FLOTADOR" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">BARCO FLOTADOR</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/552</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$6.327</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/625.jpg" alt="VAGON PRIMERAS FORMAS" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">VAGON PRIMERAS FORMAS</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/625</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$6.113</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/626.jpg" alt="LOCOMOTORA DIDACTICA" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">LOCOMOTORA DIDACTICA</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/626</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$4.661</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/627.jpg" alt="TREN DIDACTICO" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">TREN DIDACTICO</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/627</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$10.643</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/628.jpg" alt="AROS MORDILLO" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">AROS MORDILLO</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/628</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$1.663</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/630.jpg" alt="SET DEL CAMPO" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">SET DEL CAMPO</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/630</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$2.343</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/653.jpg" alt="PIRAMIDE ANILLOS APILABLES" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">PIRAMIDE ANILLOS APILABLES</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/653</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$4.221</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/656.jpg" alt="BALDE PRIMERAS FORMAS" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">BALDE PRIMERAS FORMAS</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/656</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$5.211</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/657.jpg" alt="BALDE TORRE" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">BALDE TORRE</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/657</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$7.356</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/658.jpg" alt="BALDE TORRE MINI" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">BALDE TORRE MINI</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/658</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$2.253</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/659.jpg" alt="BALDE NUMEROS" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">BALDE NUMEROS</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/659</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$5.211</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/666.jpg" alt="CUBO PRIMERAS FORMAS" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">CUBO PRIMERAS FORMAS</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/666</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$6.013</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/667.jpg" alt="SET DIDACTICO 3 EN 1 TORRE" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">SET DIDACTICO 3 EN 1 TORRE</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/667</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$11.447</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/668.jpg" alt="BALDECITOS DIDACTICOS" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">BALDECITOS DIDACTICOS</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/668</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$4.128</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/669.jpg" alt="SONAJERO" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">SONAJERO</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/669</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$2.767</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/670.jpg" alt="MORDILLO LLAVES" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">MORDILLO LLAVES</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/670</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$1.411</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/671.jpg" alt="SONAJERO Y MORDILLO" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">SONAJERO Y MORDILLO</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/671</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$3.483</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/672.jpg" alt="SET DIDACTICO GRANDE 2 EN 1" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">SET DIDACTICO GRANDE 2 EN 1</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/672</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$11.429</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/673.jpg" alt="SET DIDACTICO 3 EN 1 CASCABEL" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">SET DIDACTICO 3 EN 1 CASCABEL</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/673</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$7.285</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/676.jpg" alt="JUEGO DE RECORRIDO" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">JUEGO DE RECORRIDO</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/676</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$4.871</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/677.jpg" alt="SET DE AGUA 3 EN 1" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">SET DE AGUA 3 EN 1</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/677</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$13.413</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/678.jpg" alt="ANILLO Y SONAJERO" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">ANILLO Y SONAJERO</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/678</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$6.573</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/679.jpg" alt="GIMNASIO" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">GIMNASIO</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/679</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$19.699</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Contenido de la sección de Estación de Servicios (inicialmente oculta) -->
+        <div id="estacion-de-servicios-content" class="hidden bg-white p-6 md:p-10 rounded-3xl shadow-2xl mt-12">
+            <div class="flex items-center justify-between mb-8">
+                <div class="flex items-center space-x-4">
+                    <button id="back-to-estacion-de-servicios-categories" class="bg-red-500 hover:bg-red-600 text-white rounded-full p-2 w-10 h-10 flex items-center justify-center">
+                        <i class="fas fa-arrow-left"></i>
+                    </button>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-gray-800 tracking-tight text-center flex-grow">
+                    Estación de Servicios
+                </h2>
+                <div></div>
+            </div>
+            <div id="estacion-de-servicios-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <!-- Tarjeta 1 de Estación de Servicios -->
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/699.jpg" alt="EST.SERV.ELEV.2 RAMPAS PISTAS" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">EST.SERV.ELEV.2 RAMPAS PISTAS</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/699</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$24.213</span>
+                </div>
+                <!-- Tarjeta 2 de Estación de Servicios -->
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/700.jpg" alt="EST.SERV.ELEV.4 RAMPAS PISTAS" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">EST.SERV.ELEV.4 RAMPAS PISTAS</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/700</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$33.362</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contenido de la sección de Juegos de Mesa (inicialmente oculta) -->
+        <div id="juegos-de-mesa-content" class="hidden bg-white p-6 md:p-10 rounded-3xl shadow-2xl mt-12">
+            <div class="flex items-center justify-between mb-8">
+                <div class="flex items-center space-x-4">
+                    <button id="back-to-juegos-de-mesa-categories" class="bg-red-500 hover:bg-red-600 text-white rounded-full p-2 w-10 h-10 flex items-center justify-center">
+                        <i class="fas fa-arrow-left"></i>
+                    </button>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-gray-800 tracking-tight text-center flex-grow">
+                    Juegos de Mesa
+                </h2>
+                <div></div> <!-- Div vacío para mantener la alineación -->
+            </div>
+            <div id="juegos-de-mesa-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <!-- 7 Tarjetas de Juegos de Mesa -->
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/11.jpg" alt="MEMORIA CAJA" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">MEMORIA CAJA</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/11</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$5.028</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/12.jpg" alt="MEMORIA BLISTER" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">MEMORIA BLISTER</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/12</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$2.407</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/13.jpg" alt="DOMINO GRANJA BLISTER" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">DOMINO GRANJA BLISTER</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/13</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$2.463</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/14.jpg" alt="DOMINO ZOO BLISTER" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">DOMINO ZOO BLISTER</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/14</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$2.463</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/20.jpg" alt="LOTERIA CAJA" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">LOTERIA CAJA</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/20</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$6.111</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/34.jpg" alt="DOMINO PIRATAS CAJA" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">DOMINO PIRATAS CAJA</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/34</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$5.543</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/35.jpg" alt="DOMINO PAYASOS CAJA" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">DOMINO PAYASOS CAJA</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/35</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$5.543</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contenido de la sección de Playa (inicialmente oculta) -->
+        <div id="playa-content" class="hidden bg-white p-6 md:p-10 rounded-3xl shadow-2xl mt-12">
+            <div class="flex items-center justify-between mb-8">
+                <div class="flex items-center space-x-4">
+                    <button id="back-to-playa-categories" class="bg-red-500 hover:bg-red-600 text-white rounded-full p-2 w-10 h-10 flex items-center justify-center">
+                        <i class="fas fa-arrow-left"></i>
+                    </button>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-gray-800 tracking-tight text-center flex-grow">
+                    Playa
+                </h2>
+                <div></div> <!-- Div vacío para mantener la alineación -->
+            </div>
+            <div id="playa-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <!-- 31 Tarjetas de Playa -->
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/520.jpg" alt="PALA RASTRILLO Y COLADOR MEDIANOS" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">PALA RASTRILLO Y COLADOR MEDIANOS</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/520</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$1.049</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/522.jpg" alt="BALDE CHICO PALITA RASTRILLO Y 1 MOLDE" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">BALDE CHICO PALITA RASTRILLO Y 1 MOLDE</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/522</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$2.333</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/523.jpg" alt="BALDE CHICO PALITA RASTRILLO COLADOR Y 1 MOLDE" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">BALDE CHICO PALITA RASTRILLO COLADOR Y 1 MOLDE</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/523</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$2.836</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/524.jpg" alt="BARCO C/ BALDE MEDIANO PALITA RAST COLAD. Y 1 MOLDE" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">BARCO C/ BALDE MEDIANO PALITA RAST COLAD. Y 1 MOLDE</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/524</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$7.867</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/525.jpg" alt="JUEGO DE 4 MOLDES GRANDES" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">JUEGO DE 4 MOLDES GRANDES</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/525</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$2.196</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/526.jpg" alt="BALDE MEDIANO PALITA RASTRILLO Y 1 MOLDE" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">BALDE MEDIANO PALITA RASTRILLO Y 1 MOLDE</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/526</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$3.380</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/527.jpg" alt="BOLSON BALDE PALA RASTRILLO MEDIANO C/ CASTILLOS" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">BOLSON BALDE PALA RASTRILLO MEDIANO C/ CASTILLOS</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/527</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$8.657</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/528.jpg" alt="BOLSON BALDE MEDIANO REGADERA BARCO Y PALAS X 3" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">BOLSON BALDE MEDIANO REGADERA BARCO Y PALAS X 3</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/528</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$10.170</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/529.jpg" alt="BALDE CHICO PALA RAST MEDIANOS Y CASTILLOS" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">BALDE CHICO PALA RAST MEDIANOS Y CASTILLOS</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/529</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$4.805</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/530.jpg" alt="BALDE MEDIANO A GRANEL" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">BALDE MEDIANO A GRANEL</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/530</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$1.775</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/531.jpg" alt="BOLSO BALDE MEDIANO PALITA RAST COLADOR Y 4 MOLDES" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">BOLSO BALDE MEDIANO PALITA RAST COLADOR Y 4 MOLDES</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/531</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$5.934</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/532.jpg" alt="CANASTA PLAYA" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">CANASTA PLAYA</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/532</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$5.320</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/533.jpg" alt="BALDE MEDIANO PALITA RAST COLADOR Y 1 MOLDE" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">BALDE MEDIANO PALITA RAST COLADOR Y 1 MOLDE</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/533</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$4.579</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/534.jpg" alt="JUEGO DE PALITA Y RASTRILLO MEDIANO" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">JUEGO DE PALITA Y RASTRILLO MEDIANO</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/534</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$1.405</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/535.jpg" alt="PALA Y RASTRILLO MEDIANO CON 2 MOLDES GRANDES" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">PALA Y RASTRILLO MEDIANO CON 2 MOLDES GRANDES</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/535</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$2.777</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/536.jpg" alt="JUEGO DE 4 MOLDES" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">JUEGO DE 4 MOLDES</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/536</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$1.367</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/537.jpg" alt="BALDE CHICO PALA RAST MEDIANOS Y MOLINO" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">BALDE CHICO PALA RAST MEDIANOS Y MOLINO</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/537</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$6.353</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/538.jpg" alt="BALDE CHICO Y MOLINO" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">BALDE CHICO Y MOLINO</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/538</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$3.984</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/539.jpg" alt="MOLINO A GRANEL" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">MOLINO A GRANEL</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/539</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$2.414</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/542.jpg" alt="BOLSO BALDE PALA RAST GDE REGADERA Y 2 MOLDES GDE" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">BOLSO BALDE PALA RAST GDE REGADERA Y 2 MOLDES GDE</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/542</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$10.721</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/543.jpg" alt="REGADERA A GRANEL" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">REGADERA A GRANEL</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/543</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$2.104</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/544.jpg" alt="BALDE MEDIANO C/ PALITA RASTRILLO Y REGADERA" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">BALDE MEDIANO C/ PALITA RASTRILLO Y REGADERA</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/544</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$5.131</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/545.jpg" alt="BOLSO BALDE MEDIANO COMPLETO" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">BOLSO BALDE MEDIANO COMPLETO</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/545</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$7.866</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/555.jpg" alt="PALA Y RASTRILLO GRANDE" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">PALA Y RASTRILLO GRANDE</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/555</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$3.701</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/560.jpg" alt="BALDE PALA Y RASTRILLO MEDIANOS COLADOR Y REGADERA" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">BALDE PALA Y RASTRILLO MEDIANOS COLADOR Y REGADERA</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/560</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$6.383</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/561.jpg" alt="BALDE GRANDE PALA Y RASTRILLO MEDIANO" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">BALDE GRANDE PALA Y RASTRILLO MEDIANO</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/561</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$3.538</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/562.jpg" alt="BALDE CASTILLO A GRANEL" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">BALDE CASTILLO A GRANEL</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/562</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$2.112</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/563.jpg" alt="PALA GRANDE A GRANEL" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">PALA GRANDE A GRANEL</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/563</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$1.535</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/564.jpg" alt="BALDE CASTILLO C/ PALA GDE" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">BALDE CASTILLO C/ PALA GDE</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/564</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$3.454</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/565.jpg" alt="BALDE CASTILLO PALA GDE Y REGADERA" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">BALDE CASTILLO PALA GDE Y REGADERA</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/565</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$5.381</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/566.jpg" alt="BALDE CASTILLO PALA Y RAST MED REGADERA 1 MOLDE" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">BALDE CASTILLO PALA Y RAST MED REGADERA 1 MOLDE</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/566</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$8.455</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contenido de la sección de Línea Minis (inicialmente oculta) -->
+        <div id="linea-minis-content" class="hidden bg-white p-6 md:p-10 rounded-3xl shadow-2xl mt-12">
+            <div class="flex items-center justify-between mb-8">
+                <div class="flex items-center space-x-4">
+                    <button id="back-to-linea-minis-categories" class="bg-red-500 hover:bg-red-600 text-white rounded-full p-2 w-10 h-10 flex items-center justify-center">
+                        <i class="fas fa-arrow-left"></i>
+                    </button>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-gray-800 tracking-tight text-center flex-grow">
+                    Línea Minis
+                </h2>
+                <div></div> <!-- Div vacío para mantener la alineación -->
+            </div>
+            <div id="linea-minis-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <!-- 27 Tarjetas de Línea Minis -->
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/349.jpg" alt="AUTOS F1" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">AUTOS F1</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/349</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$5.876</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/353.jpg" alt="CITROEN-VOLQUI" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">CITROEN-VOLQUI</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/353</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$2.269</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/354.jpg" alt="CAMIONETA MINI" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">CAMIONETA MINI</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/354</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$2.269</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/355.jpg" alt="FORMULA 1 MINI" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">FORMULA 1 MINI</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/355</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$2.269</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/356.jpg" alt="JEEP MINI" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">JEEP MINI</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/356</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$2.269</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/358.jpg" alt="MINI FRONTAL" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">MINI FRONTAL</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/358</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$2.293</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/359.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">RETRO MINI</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/359</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$2.293</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/360.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">FRONTAL Y RETRO</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/360</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$5.335</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/361.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">TRAILER RETRO</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/361</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$6.822</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/362.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">FRONTAL + TRILER + RETRO</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/362</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$9.069</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/363.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">EXCAVADORA MINI</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/363</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$2.293</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/364.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">BOMBERO MINI</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/364</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$2.293</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/365.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">AMBULANCIA MINI</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/365</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$2.293</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/366.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">SET DE EMERGENCIAS MINI</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/366</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$5.335</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/367.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">SET DE BOMBEROS MINI</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/367</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$5.335</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/368.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">SET DE POLICIA MINI</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/368</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$5.335</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/369.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">POLICIA ESPECIAL MINI</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/369</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$2.293</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/680.jpeg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">MINI FRONTAL INFANTIL</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/680</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$2.293</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/681.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">RETRO MINI INFALTIL</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/681</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$2.293</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/682.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">FRONTAL Y RETRO INFANTIL</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/682</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$5.335</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/683.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">TRAILER RETRO INFANTIL</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/683</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$6.822</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/684.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">FRONTAL + TRAILER + RETRO INFANTIL</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/684</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$9.068</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/685.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">EXCAVADORA MINI INFANTIL</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/685</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$2.293</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/686.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">CAMIONETA MINI INFANTIL</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/686</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$2.293</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/687.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">SUV MINI INFANTIL</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/687</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$2.293</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/710.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">SET MICRO</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/710</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$2.313</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/711.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">MICRO GRANEL</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/711</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$664</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contenido de la sección de Rodados Chicos (inicialmente oculta) -->
+        <div id="rodados-chicos-content" class="hidden bg-white p-6 md:p-10 rounded-3xl shadow-2xl mt-12">
+            <div class="flex items-center justify-between mb-8">
+                <div class="flex items-center space-x-4">
+                    <button id="back-to-rodados-chicos-categories" class="bg-red-500 hover:bg-red-600 text-white rounded-full p-2 w-10 h-10 flex items-center justify-center">
+                        <i class="fas fa-arrow-left"></i>
+                    </button>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-gray-800 tracking-tight text-center flex-grow">
+                    Rodados Chicos
+                </h2>
+                <div></div>
+            </div>
+            <div id="rodados-chicos-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <!-- 10 Tarjetas de Rodados Chicos -->
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/200.jpg" alt="CAMION C/ balde chico palita y rastrillo" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">CAMION C/ BALDE CHICO PALITA Y RASTRILLO</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/200</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$8.574</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/201.jpg" alt="Rodado Chico 2" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">CAMION CHICO</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/201</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$6.973</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/206.jpg" alt="Rodado Chico 3" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">EXCAVADORA CHICA</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/206</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$6.973</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/208.jpg" alt="Rodado Chico 4" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">CAMION CHICO C/ PALA Y RAST. MED</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/208</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$7.223</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/210.jpg" alt="Rodado Chico 5" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">TRACTOR CHICO</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/210</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$5.014</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/228.jpg" alt="Rodado Chico 6" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">CUATRICICLO</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/228</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$4.567</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/450.jpg" alt="Rodado Chico 7" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">CAMION GUINCHE</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/450</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$6.973</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/650.jpg" alt="Rodado Chico 8" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">CAMION BOMBERO</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/650</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$6.973</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/652.jpg" alt="Rodado Chico 9" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">CAMION CEMENTERO</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/651</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$7.779</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/654.jpg" alt="Rodado Chico 10" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">CAMION CHICO C/ BLOCKS BOLSO</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/654</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$11.159</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contenido de la sección de Rodados Medianos (inicialmente oculta) -->
+        <div id="rodados-medios-content" class="hidden bg-white p-6 md:p-10 rounded-3xl shadow-2xl mt-12">
+            <div class="flex items-center justify-between mb-8">
+                <div class="flex items-center space-x-4">
+                    <button id="back-to-rodados-medios-categories" class="bg-red-500 hover:bg-red-600 text-white rounded-full p-2 w-10 h-10 flex items-center justify-center">
+                        <i class="fas fa-arrow-left"></i>
+                    </button>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-gray-800 tracking-tight text-center flex-grow">
+                    Rodados Medianos
+                </h2>
+                <div></div>
+            </div>
+            <div id="rodados-medios-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <!-- 16 Tarjetas de Rodados Medianos -->
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/207.jpg" alt="Rodado Medio 1" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">SET BOMBEROS</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/207</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$10.629</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/209.jpg" alt="Rodado Medio 2" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">CAMION CHICO CON VOLQUETE CAJA</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/209</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$12.592</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/217.jpg" alt="Rodado Medio 3" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">TRACTOR CHICO C/ACOPLADO EN CAJA</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/217</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$10.410</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/219.jpg" alt="Rodado Medio 4" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">TRACTOR TAMBERO</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/219</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$8.880</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/220.jpg" alt="Rodado Medio 5" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">CAMION MEDIANO</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/220</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$10.345</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/221.jpg" alt="Rodado Medio 6" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">CAMION MEDIANO PALA Y RASTRILLO MEDIANOS</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/221</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$12.515</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/222.jpg" alt="Rodado Medio 7" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">CAMION MEDIANO CON BALDE COMPLETO</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/222</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$14.407</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/224.jpg" alt="Rodado Medio 8" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">BOLSO CAMION MED. BALDE PALA Y RASTRILLO GDE.</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/224</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$19.398</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/225.jpg" alt="Rodado Medio 9" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">CAMION MEDIANO C/BLOCKS BOLSO</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/225</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$15.918</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/230.jpg" alt="Rodado Medio 10" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">EXCAVADORA N</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/230</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$9.998</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/231.jpg" alt="Rodado Medio 11" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">BALDE NUMEROS</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/231</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$5.211</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/232.jpg" alt="Rodado Medio 12" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">SET N</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/232</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$18.749</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/234.jpg" alt="Rodado Medio 13" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">EXCAVADORA CAD</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/234</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$11.379</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/235.jpg" alt="Rodado Medio 14" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">VOLCADOR CAD</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/235</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$11.379</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/451.jpg" alt="Rodado Medio 15" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">VOLCADOR Y GUINCHE</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/451</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$12.780</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/652.jpg" alt="Rodado Medio 16" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">TRACTOR CHICO C/ARADO</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/652</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$7.589</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contenido de la sección de Rodados Grandes (inicialmente oculta) -->
+        <div id="rodados-grandes-content" class="hidden bg-white p-6 md:p-10 rounded-3xl shadow-2xl mt-12">
+            <div class="flex items-center justify-between mb-8">
+                <div class="flex items-center space-x-4">
+                    <button id="back-to-rodados-grandes-categories" class="bg-red-500 hover:bg-red-600 text-white rounded-full p-2 w-10 h-10 flex items-center justify-center">
+                        <i class="fas fa-arrow-left"></i>
+                    </button>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-gray-800 tracking-tight text-center flex-grow">
+                    Rodados Grandes
+                </h2>
+                <div></div>
+            </div>
+            <div id="rodados-grandes-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <!-- 13 Tarjetas de Rodados Grandes -->
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/202.jpg" alt="Rodado Grande 1" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">CAMION GRANDE A GRANEL</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/202</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">21.200</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/203.jpg" alt="Rodado Grande 2" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">CONSTRUCTOR 4</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/203</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$21.664</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/204.jpg" alt="Rodado Grande 3" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">CONSTRUCTOR 1</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/204</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$13.317</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/205.jpg" alt="Rodado Grande 4" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">CONSTRUCTOR 2</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/205</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">28.703</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/211.jpg" alt="Rodado Grande 5" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">EXCAVADORA GRANDE</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/211</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$15.507</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/212.jpg" alt="Rodado Grande 6" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">TRACTOR GRANDE</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/212</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$16.499</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/213.jpg" alt="Rodado Grande 7" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">TRACTOR GDE. CON ACOPLADO</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/213</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$25.710</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/214.jpg" alt="Rodado Grande 8" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">CAMION TRANSPORTE C/ 2 AUTOS</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/214</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$30.117</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/215.jpg" alt="Rodado Grande 9" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">CAMION TRANSPORTE CHICO C/ 1 AUTO</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/215</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$11.469</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/216.jpg" alt="Rodado Grande 10" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">SEMI HACIENDA C / ANIMALES</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/216</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$11.566</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/218.jpg" alt="Rodado Grande 11" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">CONSTRUCTOR 3</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/218</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$31.513</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/229.jpg" alt="Rodado Grande 12" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">TRANSPORTE CUATRICICLOS</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/229</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$29.169</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/233.jpg" alt="Rodado Grande 13" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">TRANSPORTE CHICO CONSTRUCCION INFANTIL</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/233</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$13.707</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contenido de la sección de Línea Hogar (inicialmente oculta) -->
+        <div id="linea-hogar-content" class="hidden bg-white p-6 md:p-10 rounded-3xl shadow-2xl mt-12">
+            <div class="flex items-center justify-between mb-8">
+                <div class="flex items-center space-x-4">
+                    <button id="back-to-linea-hogar-categories" class="bg-red-500 hover:bg-red-600 text-white rounded-full p-2 w-10 h-10 flex items-center justify-center">
+                        <i class="fas fa-arrow-left"></i>
+                    </button>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-gray-800 tracking-tight text-center flex-grow">
+                    Línea Hogar
+                </h2>
+                <div></div>
+            </div>
+            <div id="linea-hogar-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <!-- Tarjetas de Línea Hogar (placeholder) -->
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/500.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">JUEGO DE TE CON BANDEJA</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/500</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$5.154</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/501.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">JUEGO DE TE EN BALDE</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/501</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$5.136</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/502.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">SET DE LIMPIEZA CON PALA</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/502</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$4.493</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/505.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">SET DE LIMPIEZA CON PALA Y BALDE</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/505</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$5.978</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/506.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">CANASTA DE FRUTAS Y VERDURAS</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/506</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$5.710</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/507.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">SET DE FRUTAS Y VERDURAS</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/507</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$2.543</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/508.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">PLANCHITA</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/508</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$2.217</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/510.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">VALIJA JUEGO DE TE</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/510</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$5.582</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/604.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">CARRITO FRUTAS Y VERDURAS</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/604</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$8.228</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/608.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">COCHECITO DE MUÑECAS</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/608</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$5.721</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/609.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">CARRITO DE SUPERMERCADO</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/609</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$5.912</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/610.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">COCINA</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/610</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$16.324</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/611.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">COCINA GRANDE</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/611</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$26.216</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/612.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">JUEGO SET DE COCINA</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/612</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$3.304</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/613.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">CANASTA SET COCINA Y TE</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/613</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$8.011</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/614.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">ANAFE</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/614</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$6.483</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/615.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">KICHINETTE</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/615</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$14.188</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/616.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">PIC-NIC</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/616</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$7.906</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/618.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">SET DE MATE</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/618</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$3.728</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/619.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">MATE EN BANDEJA</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/619</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$5.160</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contenido de la sección de Línea Masas (inicialmente oculta) -->
+        <div id="linea-masas-content" class="hidden bg-white p-6 md:p-10 rounded-3xl shadow-2xl mt-12">
+            <div class="flex items-center justify-between mb-8">
+                <div class="flex items-center space-x-4">
+                    <button id="back-to-linea-masas-categories" class="bg-red-500 hover:bg-red-600 text-white rounded-full p-2 w-10 h-10 flex items-center justify-center">
+                        <i class="fas fa-arrow-left"></i>
+                    </button>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-gray-800 tracking-tight text-center flex-grow">
+                    Línea Masas
+                </h2>
+                <div></div>
+            </div>
+            <div id="linea-masas-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <!-- Tarjetas de Línea Masas (placeholder) -->
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/703.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">MASAS X 1 CHICA DISPLAY</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/703</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$514</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/704.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">MASAS X 1 GRANDE</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/704</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$1.329</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/705.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">MASAS X 2 GRANDE</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/705</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$2.615</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/706.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">MASAS X 4 GRANDE</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/706</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$4.919</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/707.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">MASAS X KILO</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/707</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$4.183</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/708.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">MASAS C/ EXTRUSOR Y CORTANTE</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/708</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$8.666</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/709.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">MASAS PACK X 10 CHICO</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/709</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$6.144</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/713.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">MASAS CON EXTRURSOR</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/713</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$6.340</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/715.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">MASAS BURGER KIT</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/715</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$6.095</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/716.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">MASAS CON SET DE OLLAS</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/716</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$9.766</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/717.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">MASAS MONSTRUOS</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/717</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$8.555</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/718.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">MASAS EN POTE</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/718</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$10.193</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/719.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">MASAS CON SOLAPA</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/719</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$3.250</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/720.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">MASAS EN VALIJA</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/720</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$9.168</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/721.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">MASAS PACK ZOO</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/721</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$5.612</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/722.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">MASAS PACK GRANJA</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/722</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$5.612</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/724.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">MASAS EN BALDE</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/724</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$6.437</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/725.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">MASAS PIZZA PARTY</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/725</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$9.538</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/726.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">MASA FELIZ CUMPLE</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/726</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$10.383</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/727.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">MASAS PANZOTAS KIDS</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/727</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$4.347</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/728.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">MASAS PANZOTAS DINOS</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/728</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$4.347</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/729.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">MASAS PACK KITCHEN</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/729</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$5.509</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/730.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">MASAS JUNIOR CHEF</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/730</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$15.142</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/731.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">MASAS MONIGOTES</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/731</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$5.522</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/732.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">MASAS DINOSAURIOS</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/732</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$5.453</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contenido de la sección de Línea Blocks (inicialmente oculta) -->
+        <div id="linea-blocks-content" class="hidden bg-white p-6 md:p-10 rounded-3xl shadow-2xl mt-12">
+            <div class="flex items-center justify-between mb-8">
+                <div class="flex items-center space-x-4">
+                    <button id="back-to-linea-blocks-categories" class="bg-red-500 hover:bg-red-600 text-white rounded-full p-2 w-10 h-10 flex items-center justify-center">
+                        <i class="fas fa-arrow-left"></i>
+                    </button>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-gray-800 tracking-tight text-center flex-grow">
+                    Línea Blocks
+                </h2>
+                <div></div>
+            </div>
+            <div id="linea-blocks-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <!-- Tarjetas de Línea Blocks (placeholder) -->
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/511.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">VALIJA BLOCKS</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/511</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$4.888</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/512.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">BALDE C/BLOCKS DIDACTICOS 18 PIEZAS</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/512</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$7.336</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/550.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">BOLSO C/ BLOCKS DIDACTICOS 42 PIEZAS</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/550</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$13.178</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/551.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">BOLSO C/ BLOCKS DIDACTICOS 100 PIEZAS</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/551</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$27.893</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/553.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">BOLDS BLOCK CHICOS 240 PIEZAS</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/553</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$21.534</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/554.jpeg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">BALDE C/ BLOCKS DIDACTICOS 36 PIEZAS</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/554</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$14.042</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/556.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">JUEGO DE BLOCKS 30 PIEZAS</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/556</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$10.288</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/660.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">BALDE BLOCK CHICOS 60 PIEZAS</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/660</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$9.412</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/661.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">BALDE BLOCKS CHICOS 120 PIEZAS</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/661</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$17.226</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/662.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">BALDE BLOCKS CHICOS 240 PIEZAS</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/662</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$29.988</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/663.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">BOLSA BLOCKS CHICOS X 24 PIEZAS</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/663</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$2.902</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/664.jpeg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">BOLSA BLOCKS CHICOS X 36 PIEZAS</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/664</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$3.730</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/719.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">BALDE BLOCKS CHICOS X 29 PIEZAS</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/719</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$4.922</span>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Contenido de la sección de Línea Juegos (inicialmente oculta) -->
+        <div id="linea-juegos-content" class="hidden bg-white p-6 md:p-10 rounded-3xl shadow-2xl mt-12">
+            <div class="flex items-center justify-between mb-8">
+                <div class="flex items-center space-x-4">
+                    <button id="back-to-linea-juegos-categories" class="bg-red-500 hover:bg-red-600 text-white rounded-full p-2 w-10 h-10 flex items-center justify-center">
+                        <i class="fas fa-arrow-left"></i>
+                    </button>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-gray-800 tracking-tight text-center flex-grow">
+                    Línea Juegos
+                </h2>
+                <div></div>
+            </div>
+            <div id="linea-juegos-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <!-- Tarjetas de Línea Juegos (placeholder) -->
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/404.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">JUEGOS DE BOWLING</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/404</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$7.179</span>
+                </div>
+                 <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/406.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">set de golf</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/406</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$5.669</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contenido de la sección de Línea Taller (inicialmente oculta) -->
+        <div id="linea-taller-content" class="hidden bg-white p-6 md:p-10 rounded-3xl shadow-2xl mt-12">
+            <div class="flex items-center justify-between mb-8">
+                <div class="flex items-center space-x-4">
+                    <button id="back-to-linea-taller-categories" class="bg-red-500 hover:bg-red-600 text-white rounded-full p-2 w-10 h-10 flex items-center justify-center">
+                        <i class="fas fa-arrow-left"></i>
+                    </button>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-gray-800 tracking-tight text-center flex-grow">
+                    Línea Taller
+                </h2>
+                <div></div>
+            </div>
+            <div id="linea-taller-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <!-- Tarjetas de Línea Taller (placeholder) -->
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/410.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">MIS HERRAMIENTAS</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/410</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$3.671</span>
+                </div>
+                 <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/411.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">SET DE HERRAMIENTAS</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/411</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$5.151</span>
+                </div>
+                 <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/412.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">BANCO DE HERRAMIENTAS</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/412</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$17.310</span>
+                </div>
+                 <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/413.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">CASCO Y HERAMIENTAS</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/413</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$4.159</span>
+                </div>
+                 <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/414.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">CASCO A GRANEL EN DISPLEY</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/414</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$1.906</span>
+                </div>
+                 <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/674.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">SET MINI CONTRUIR 1</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/674</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$22.276</span>
+                </div>
+                 <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/675.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">SET MINI CONSTRUIR 2</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/675</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$39.674</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contenido de la sección de Línea Jardín (inicialmente oculta) -->
+        <div id="linea-jardin-content" class="hidden bg-white p-6 md:p-10 rounded-3xl shadow-2xl mt-12">
+            <div class="flex items-center justify-between mb-8">
+                <div class="flex items-center space-x-4">
+                    <button id="back-to-linea-jardin-categories" class="bg-red-500 hover:bg-red-600 text-white rounded-full p-2 w-10 h-10 flex items-center justify-center">
+                        <i class="fas fa-arrow-left"></i>
+                    </button>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-gray-800 tracking-tight text-center flex-grow">
+                    Línea Jardín
+                </h2>
+                <div></div>
+            </div>
+            <div id="linea-jardin-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <!-- Tarjetas de Línea Jardín (placeholder) -->
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/549.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">CARRETILLA EN BOLSA</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/549</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$16.447</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/601.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">CARRETILLA COMPLETA BOLSA</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/601</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$22.602</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-4 text-left flex flex-col justify-between">
+                    <div class="min-h-[100px]">
+                        <img src="bm/655.jpg" alt="Producto" class="w-full h-40 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">WAGON GIGANTE</h3>
+                        <p class="text-gray-500 text-sm">Código: dur/655</p>
+                    </div>
+                    <span class="text-2xl font-semibold text-red-600 mt-2 block">$28.422</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Contenido de la sección de Resultados de Búsqueda (inicialmente oculta) -->
+        <div id="search-results-content" class="hidden bg-white p-6 md:p-10 rounded-3xl shadow-2xl mt-12">
+            <div class="flex items-center justify-between mb-8">
+                <div class="flex items-center space-x-4">
+                    <button id="back-from-search" class="bg-red-500 hover:bg-red-600 text-white rounded-full p-2 w-10 h-10 flex items-center justify-center">
+                        <i class="fas fa-arrow-left"></i>
+                    </button>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-gray-800 tracking-tight text-center flex-grow">
+                    Resultados de Búsqueda
+                </h2>
+                <div></div>
+            </div>
+            <div id="search-results-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <!-- Las tarjetas de resultados se insertarán aquí dinámicamente -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Botón de "Subir" que aparece al hacer scroll -->
+    <button id="scroll-to-top-btn" class="fixed bottom-6 right-6 p-4 bg-red-600 text-white rounded-full shadow-lg transition-all duration-300 hidden">
+        <i class="fas fa-arrow-up text-xl"></i>
+    </button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuButton = document.getElementById('menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const searchButton = document.getElementById('search-button');
+            const searchBar = document.getElementById('search-bar');
+            
+            // Lógica para el menú hamburguesa
+            menuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            // Lógica para la barra de búsqueda
+            searchButton.addEventListener('click', () => {
+                searchBar.classList.toggle('hidden');
+                if (!searchBar.classList.contains('hidden')) {
+                    searchBar.querySelector('input').focus();
+                }
+            });
+
+            // Lógica para la navegación entre secciones
+            const homeLink = document.getElementById('home-link');
+            const productsLink = document.getElementById('products-link');
+            const mobileHomeLink = document.getElementById('mobile-home-link');
+            const mobileProductsLink = document.getElementById('mobile-products-link');
+            
+            const homeContent = document.getElementById('home-content');
+            const productsContent = document.getElementById('products-content');
+            const puzzlesContent = document.getElementById('puzzles-content');
+            const didacticosContent = document.getElementById('didacticos-content');
+            const estacionDeServiciosContent = document.getElementById('estacion-de-servicios-content');
+            const juegosDeMesaContent = document.getElementById('juegos-de-mesa-content');
+            const playaContent = document.getElementById('playa-content');
+            const lineaMinisContent = document.getElementById('linea-minis-content');
+            const rodadosChicosContent = document.getElementById('rodados-chicos-content');
+            const rodadosMediosContent = document.getElementById('rodados-medios-content');
+            const rodadosGrandesContent = document.getElementById('rodados-grandes-content');
+            const lineaHogarContent = document.getElementById('linea-hogar-content');
+            const lineaMasasContent = document.getElementById('linea-masas-content');
+            const lineaBlocksContent = document.getElementById('linea-blocks-content');
+            const lineaJuegosContent = document.getElementById('linea-juegos-content');
+            const lineaTallerContent = document.getElementById('linea-taller-content');
+            const lineaJardinContent = document.getElementById('linea-jardin-content');
+            const searchResultsContent = document.getElementById('search-results-content');
+            
+            const puzzlesCategoryCard = document.getElementById('puzzles-category-card');
+            const didacticosCategoryCard = document.getElementById('didacticos-category-card');
+            const estacionDeServiciosCategoryCard = document.getElementById('estacion-de-servicios-category-card');
+            const juegosDeMesaCategoryCard = document.getElementById('juegos-de-mesa-category-card');
+            const playaCategoryCard = document.getElementById('playa-category-card');
+            const lineaMinisCategoryCard = document.getElementById('linea-minis-category-card');
+            const rodadosChicosCategoryCard = document.getElementById('rodados-chicos-category-card');
+            const rodadosMediosCategoryCard = document.getElementById('rodados-medios-category-card');
+            const rodadosGrandesCategoryCard = document.getElementById('rodados-grandes-category-card');
+            const lineaHogarCategoryCard = document.getElementById('linea-hogar-category-card');
+            const lineaMasasCategoryCard = document.getElementById('linea-masas-category-card');
+            const lineaBlocksCategoryCard = document.getElementById('linea-blocks-category-card');
+            const lineaJuegosCategoryCard = document.getElementById('linea-juegos-category-card');
+            const lineaTallerCategoryCard = document.getElementById('linea-taller-category-card');
+            const lineaJardinCategoryCard = document.getElementById('linea-jardin-category-card');
+
+            const backToCategoriesBtn = document.getElementById('back-to-categories');
+            const backToDidacticosCategoriesBtn = document.getElementById('back-to-didacticos-categories');
+            const backToEstacionDeServiciosCategoriesBtn = document.getElementById('back-to-estacion-de-servicios-categories');
+            const backToJuegosDeMesaCategoriesBtn = document.getElementById('back-to-juegos-de-mesa-categories');
+            const backToPlayaCategoriesBtn = document.getElementById('back-to-playa-categories');
+            const backToLineaMinisCategoriesBtn = document.getElementById('back-to-linea-minis-categories');
+            const backToRodadosChicosCategoriesBtn = document.getElementById('back-to-rodados-chicos-categories');
+            const backToRodadosMediosCategoriesBtn = document.getElementById('back-to-rodados-medios-categories');
+            const backToRodadosGrandesCategoriesBtn = document.getElementById('back-to-rodados-grandes-categories');
+            const backToLineaHogarCategoriesBtn = document.getElementById('back-to-linea-hogar-categories');
+            const backToLineaMasasCategoriesBtn = document.getElementById('back-to-linea-masas-categories');
+            const backToLineaBlocksCategoriesBtn = document.getElementById('back-to-linea-blocks-categories');
+            const backToLineaJuegosCategoriesBtn = document.getElementById('back-to-linea-juegos-categories');
+            const backToLineaTallerCategoriesBtn = document.getElementById('back-to-linea-taller-categories');
+            const backToLineaJardinCategoriesBtn = document.getElementById('back-to-linea-jardin-categories');
+            const backFromSearchBtn = document.getElementById('back-from-search');
+
+            const searchInput = document.getElementById('search-input');
+            const puzzlesGrid = document.getElementById('puzzles-grid');
+            const didacticosGrid = document.getElementById('didacticos-grid');
+            const estacionDeServiciosGrid = document.getElementById('estacion-de-servicios-grid');
+            const juegosDeMesaGrid = document.getElementById('juegos-de-mesa-grid');
+            const playaGrid = document.getElementById('playa-grid');
+            const lineaMinisGrid = document.getElementById('linea-minis-grid');
+            const rodadosChicosGrid = document.getElementById('rodados-chicos-grid');
+            const rodadosMediosGrid = document.getElementById('rodados-medios-grid');
+            const rodadosGrandesGrid = document.getElementById('rodados-grandes-grid');
+            const lineaHogarGrid = document.getElementById('linea-hogar-grid');
+            const lineaMasasGrid = document.getElementById('linea-masas-grid');
+            const lineaBlocksGrid = document.getElementById('linea-blocks-grid');
+            const lineaJuegosGrid = document.getElementById('linea-juegos-grid');
+            const lineaTallerGrid = document.getElementById('linea-taller-grid');
+            const lineaJardinGrid = document.getElementById('linea-jardin-grid');
+            const searchResultsGrid = document.getElementById('search-results-grid');
+
+            const scrollToTopBtn = document.getElementById('scroll-to-top-btn');
+
+            function showContent(sectionToShow) {
+                // Ocultar todas las secciones
+                homeContent.classList.add('hidden');
+                productsContent.classList.add('hidden');
+                puzzlesContent.classList.add('hidden');
+                didacticosContent.classList.add('hidden');
+                estacionDeServiciosContent.classList.add('hidden');
+                juegosDeMesaContent.classList.add('hidden');
+                playaContent.classList.add('hidden');
+                lineaMinisContent.classList.add('hidden');
+                rodadosChicosContent.classList.add('hidden');
+                rodadosMediosContent.classList.add('hidden');
+                rodadosGrandesContent.classList.add('hidden');
+                lineaHogarContent.classList.add('hidden');
+                lineaMasasContent.classList.add('hidden');
+                lineaBlocksContent.classList.add('hidden');
+                lineaJuegosContent.classList.add('hidden');
+                lineaTallerContent.classList.add('hidden');
+                lineaJardinContent.classList.add('hidden');
+                searchResultsContent.classList.add('hidden');
+
+                // Mostrar la sección solicitada
+                if (sectionToShow === 'home') {
+                    homeContent.classList.remove('hidden');
+                } else if (sectionToShow === 'products') {
+                    productsContent.classList.remove('hidden');
+                } else if (sectionToShow === 'puzzles') {
+                    puzzlesContent.classList.remove('hidden');
+                } else if (sectionToShow === 'didacticos') {
+                    didacticosContent.classList.remove('hidden');
+                } else if (sectionToShow === 'estacion-de-servicios') {
+                    estacionDeServiciosContent.classList.remove('hidden');
+                } else if (sectionToShow === 'juegos-de-mesa') {
+                    juegosDeMesaContent.classList.remove('hidden');
+                } else if (sectionToShow === 'playa') {
+                    playaContent.classList.remove('hidden');
+                } else if (sectionToShow === 'linea-minis') {
+                    lineaMinisContent.classList.remove('hidden');
+                } else if (sectionToShow === 'rodados-chicos') {
+                    rodadosChicosContent.classList.remove('hidden');
+                } else if (sectionToShow === 'rodados-medios') {
+                    rodadosMediosContent.classList.remove('hidden');
+                } else if (sectionToShow === 'rodados-grandes') {
+                    rodadosGrandesContent.classList.remove('hidden');
+                } else if (sectionToShow === 'linea-hogar') {
+                    lineaHogarContent.classList.remove('hidden');
+                } else if (sectionToShow === 'linea-masas') {
+                    lineaMasasContent.classList.remove('hidden');
+                } else if (sectionToShow === 'linea-blocks') {
+                    lineaBlocksContent.classList.remove('hidden');
+                } else if (sectionToShow === 'linea-juegos') {
+                    lineaJuegosContent.classList.remove('hidden');
+                } else if (sectionToShow === 'linea-taller') {
+                    lineaTallerContent.classList.remove('hidden');
+                } else if (sectionToShow === 'linea-jardin') {
+                    lineaJardinContent.classList.remove('hidden');
+                } else if (sectionToShow === 'search-results') {
+                    searchResultsContent.classList.remove('hidden');
+                }
+            }
+
+            homeLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                showContent('home');
+            });
+
+            productsLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                showContent('products');
+            });
+
+            // También para la versión móvil
+            mobileHomeLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                showContent('home');
+                mobileMenu.classList.add('hidden'); // Ocultar el menú después de la selección
+            });
+
+            mobileProductsLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                showContent('products');
+                mobileMenu.classList.add('hidden'); // Ocultar el menú después de la selección
+            });
+
+            // Lógica para mostrar las secciones al hacer clic en las categorías
+            if(puzzlesCategoryCard) puzzlesCategoryCard.addEventListener('click', () => {
+                showContent('puzzles');
+            });
+
+            if(didacticosCategoryCard) didacticosCategoryCard.addEventListener('click', () => {
+                showContent('didacticos');
+            });
+            
+            if(estacionDeServiciosCategoryCard) estacionDeServiciosCategoryCard.addEventListener('click', () => {
+                showContent('estacion-de-servicios');
+            });
+
+            if(juegosDeMesaCategoryCard) juegosDeMesaCategoryCard.addEventListener('click', () => {
+                showContent('juegos-de-mesa');
+            });
+
+            if(playaCategoryCard) playaCategoryCard.addEventListener('click', () => {
+                showContent('playa');
+            });
+
+            if(lineaMinisCategoryCard) lineaMinisCategoryCard.addEventListener('click', () => {
+                showContent('linea-minis');
+            });
+            
+            if(rodadosChicosCategoryCard) rodadosChicosCategoryCard.addEventListener('click', () => {
+                showContent('rodados-chicos');
+            });
+
+            if(rodadosMediosCategoryCard) rodadosMediosCategoryCard.addEventListener('click', () => {
+                showContent('rodados-medios');
+            });
+
+            if(rodadosGrandesCategoryCard) rodadosGrandesCategoryCard.addEventListener('click', () => {
+                showContent('rodados-grandes');
+            });
+
+            if(lineaHogarCategoryCard) lineaHogarCategoryCard.addEventListener('click', () => {
+                showContent('linea-hogar');
+            });
+
+            if(lineaMasasCategoryCard) lineaMasasCategoryCard.addEventListener('click', () => {
+                showContent('linea-masas');
+            });
+
+            if(lineaBlocksCategoryCard) lineaBlocksCategoryCard.addEventListener('click', () => {
+                showContent('linea-blocks');
+            });
+
+            if(lineaJuegosCategoryCard) lineaJuegosCategoryCard.addEventListener('click', () => {
+                showContent('linea-juegos');
+            });
+
+            if(lineaTallerCategoryCard) lineaTallerCategoryCard.addEventListener('click', () => {
+                showContent('linea-taller');
+            });
+
+            if(lineaJardinCategoryCard) lineaJardinCategoryCard.addEventListener('click', () => {
+                showContent('linea-jardin');
+            });
+
+            // Lógica para volver a las categorías al hacer clic en el botón de retroceso
+            if(backToCategoriesBtn) backToCategoriesBtn.addEventListener('click', () => {
+                showContent('products');
+            });
+            if(backToDidacticosCategoriesBtn) backToDidacticosCategoriesBtn.addEventListener('click', () => {
+                showContent('products');
+            });
+            if(backToEstacionDeServiciosCategoriesBtn) backToEstacionDeServiciosCategoriesBtn.addEventListener('click', () => {
+                showContent('products');
+            });
+            if(backToJuegosDeMesaCategoriesBtn) backToJuegosDeMesaCategoriesBtn.addEventListener('click', () => {
+                showContent('products');
+            });
+            if(backToPlayaCategoriesBtn) backToPlayaCategoriesBtn.addEventListener('click', () => {
+                showContent('products');
+            });
+            if(backToLineaMinisCategoriesBtn) backToLineaMinisCategoriesBtn.addEventListener('click', () => {
+                showContent('products');
+            });
+            if(backToRodadosChicosCategoriesBtn) backToRodadosChicosCategoriesBtn.addEventListener('click', () => {
+                showContent('products');
+            });
+            if(backToRodadosMediosCategoriesBtn) backToRodadosMediosCategoriesBtn.addEventListener('click', () => {
+                showContent('products');
+            });
+            if(backToRodadosGrandesCategoriesBtn) backToRodadosGrandesCategoriesBtn.addEventListener('click', () => {
+                showContent('products');
+            });
+            if(backToLineaHogarCategoriesBtn) backToLineaHogarCategoriesBtn.addEventListener('click', () => {
+                showContent('products');
+            });
+            if(backToLineaMasasCategoriesBtn) backToLineaMasasCategoriesBtn.addEventListener('click', () => {
+                showContent('products');
+            });
+            if(backToLineaBlocksCategoriesBtn) backToLineaBlocksCategoriesBtn.addEventListener('click', () => {
+                showContent('products');
+            });
+            if(backToLineaJuegosCategoriesBtn) backToLineaJuegosCategoriesBtn.addEventListener('click', () => {
+                showContent('products');
+            });
+            if(backToLineaTallerCategoriesBtn) backToLineaTallerCategoriesBtn.addEventListener('click', () => {
+                showContent('products');
+            });
+            if(backToLineaJardinCategoriesBtn) backToLineaJardinCategoriesBtn.addEventListener('click', () => {
+                showContent('products');
+            });
+            if(backFromSearchBtn) backFromSearchBtn.addEventListener('click', () => {
+                searchInput.value = '';
+                showContent('home');
+            });
+
+
+            // Lógica del carrusel de productos
+            const carousel = document.getElementById('product-carousel');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            const carouselCards = document.querySelectorAll('.carousel-card');
+
+            // Establecer la primera tarjeta como activa por defecto
+            if (carouselCards.length > 0) {
+                carouselCards[0].classList.add('is-active');
+            }
+
+            // Función para actualizar la tarjeta activa y centrarla
+            function updateActiveCard(direction) {
+                const activeCard = document.querySelector('.carousel-card.is-active');
+                if (!activeCard) return;
+
+                let nextCard;
+                if (direction === 'next') {
+                    nextCard = activeCard.nextElementSibling;
+                    if (!nextCard) {
+                        nextCard = carouselCards[0]; // Vuelve al inicio
+                    }
+                } else if (direction === 'prev') {
+                    nextCard = activeCard.previousElementSibling;
+                    if (!nextCard) {
+                        nextCard = carouselCards[carouselCards.length - 1]; // Vuelve al final
+                    }
+                }
+
+                if (nextCard) {
+                    activeCard.classList.remove('is-active');
+                    nextCard.classList.add('is-active');
+                    nextCard.scrollIntoView({
+                        behavior: 'smooth',
+                        inline: 'center'
+                    });
+                }
+            }
+
+            nextBtn.addEventListener('click', () => {
+                updateActiveCard('next');
+            });
+
+            prevBtn.addEventListener('click', () => {
+                updateActiveCard('prev');
+            });
+
+            // Lógica de búsqueda para todas las secciones
+            searchInput.addEventListener('input', () => {
+                const query = searchInput.value.toLowerCase();
+                
+                // Si la búsqueda se inicia desde el inicio, se busca en todas las categorías
+                if (document.getElementById('home-content').classList.contains('hidden') && query === '') {
+                    showContent('home');
+                    return;
+                }
+
+                if (query.length > 0) {
+                    showContent('search-results');
+                    searchResultsGrid.innerHTML = ''; // Limpiar resultados anteriores
+
+                    const allGrids = [
+                        puzzlesGrid,
+                        didacticosGrid,
+                        estacionDeServiciosGrid,
+                        juegosDeMesaGrid,
+                        playaGrid,
+                        lineaMinisGrid,
+                        rodadosChicosGrid,
+                        rodadosMediosGrid,
+                        rodadosGrandesGrid,
+                        lineaHogarGrid,
+                        lineaMasasGrid,
+                        lineaBlocksGrid,
+                        lineaJuegosGrid,
+                        lineaTallerGrid,
+                        lineaJardinGrid
+                    ];
+                    
+                    const allCards = document.querySelectorAll('.bg-white.rounded-xl');
+                    
+                    allCards.forEach(card => {
+                        const title = card.querySelector('h3').textContent.toLowerCase();
+                        const code = card.querySelector('p').textContent.toLowerCase();
+                        if (title.includes(query) || code.includes(query)) {
+                            const clonedCard = card.cloneNode(true);
+                            searchResultsGrid.appendChild(clonedCard);
+                        }
+                    });
+
+                    // Si no hay resultados, mostrar un mensaje
+                    if (searchResultsGrid.innerHTML === '') {
+                        searchResultsGrid.innerHTML = '<p class="text-center text-gray-500 text-xl col-span-full">No se encontraron productos que coincidan con la búsqueda.</p>';
+                    }
+
+                } else {
+                    // Si el campo de búsqueda está vacío, volver a la página de inicio
+                    showContent('home');
+                }
+            });
+
+            // Lógica del botón para volver arriba
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 200) { // Muestra el botón después de 200px de scroll
+                    scrollToTopBtn.classList.remove('hidden');
+                } else {
+                    scrollToTopBtn.classList.add('hidden');
+                }
+            });
+
+            scrollToTopBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
